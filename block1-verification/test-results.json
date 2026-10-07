@@ -1,0 +1,42 @@
+[
+  {
+    "stage": "block1-stage-01-files",
+    "runtime": "Ubuntu WSL / Python 3.12.3 / pytest 9.1.1",
+    "command": "python -B -m pytest -q -p no:cacheprovider --junitxml=../block1-verification/stage01-tests.xml",
+    "exit_code": 0,
+    "counts": {
+      "tests": 49,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "pytest_reported_seconds": 36.71,
+    "junit_file": "block1-verification/stage01-tests.xml",
+    "verification_phase": "Complete suite rerun after final cosmetic/submission cleanup.",
+    "library_versions": {
+      "langchain": "1.4.3",
+      "langchain-openai": "1.6.7",
+      "openai": "3.26.0"
+    }
+  },
+  {
+    "stage": "block1-stage-02-skills",
+    "runtime": "Ubuntu WSL / Python 3.12.3 / pytest 9.1.1",
+    "command": "python -B -m pytest -q -p no:cacheprovider --junitxml=../block1-verification/stage02-tests.xml",
+    "exit_code": 0,
+    "counts": {
+      "tests": 62,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "pytest_reported_seconds": 31.13,
+    "junit_file": "block1-verification/stage02-tests.xml",
+    "verification_phase": "Complete suite rerun after final cosmetic/submission cleanup.",
+    "library_versions": {
+      "langchain": "1.4.3",
+      "langchain-openai": "1.6.7",
+      "openai": "3.26.0"
+    }
+  }
+]

@@ -1,0 +1,152 @@
+{
+  "stage": "block1-stage-01-files",
+  "evidence_kind": "actual offline tool invocations; NOT a live model trace",
+  "model_configuration": {
+    "available": false,
+    "missing_variable_names": [
+      "OPENAI_API_KEY",
+      "MODEL_NAME"
+    ]
+  },
+  "policy_listing": {
+    "ok": true,
+    "path": "data/policies",
+    "entries": [
+      {
+        "name": "policy-before-oct.md",
+        "path": "data/policies/policy-before-oct.md",
+        "type": "file"
+      },
+      {
+        "name": "policy-from-oct.md",
+        "path": "data/policies/policy-from-oct.md",
+        "type": "file"
+      }
+    ]
+  },
+  "direct_tests": [
+    {
+      "case": "valid_directory",
+      "arguments": {
+        "path": "data"
+      },
+      "result": {
+        "ok": true,
+        "path": "data",
+        "entries": [
+          {
+            "name": "empty",
+            "path": "data/empty",
+            "type": "directory"
+          },
+          {
+            "name": "note.md",
+            "path": "data/note.md",
+            "type": "file"
+          }
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "file_path",
+      "arguments": {
+        "path": "data/note.md"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "NOT_A_DIRECTORY",
+          "message": "Đây không phải thư mục: data/note.md"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "nonexistent",
+      "arguments": {
+        "path": "data/missing"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "DIRECTORY_NOT_FOUND",
+          "message": "Không tìm thấy thư mục: data/missing"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "outside_workspace",
+      "arguments": {
+        "path": "../outside"
+      },
+      "result": {
+        "ok": false,
+        "error": {
+          "code": "PATH_OUTSIDE_WORKSPACE",
+          "message": "Đường dẫn thoát ra ngoài workspace: ../outside"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "empty_directory",
+      "arguments": {
+        "path": "data/empty"
+      },
+      "result": {
+        "ok": true,
+        "path": "data/empty",
+        "entries": []
+      },
+      "status": "PASS"
+    }
+  ],
+  "rename_tool_check": {
+    "status": "PASS",
+    "mapping": [
+      {
+        "old": "policy-before-oct.md",
+        "new": "archive-q7.md",
+        "before_sha256": "652e47574ee52c975b13624198cbb527a9ae28c18c799cf1ab339e16eafd7d2d",
+        "after_sha256": "652e47574ee52c975b13624198cbb527a9ae28c18c799cf1ab339e16eafd7d2d"
+      },
+      {
+        "old": "policy-from-oct.md",
+        "new": "document-x9.md",
+        "before_sha256": "4d37991bdb1ce4b178eabe1a59119a11efae8ff4ed930457ad56565a7e39db48",
+        "after_sha256": "4d37991bdb1ce4b178eabe1a59119a11efae8ff4ed930457ad56565a7e39db48"
+      }
+    ],
+    "listing_result": {
+      "ok": true,
+      "path": "data/policies",
+      "entries": [
+        {
+          "name": "archive-q7.md",
+          "path": "data/policies/archive-q7.md",
+          "type": "file"
+        },
+        {
+          "name": "document-x9.md",
+          "path": "data/policies/document-x9.md",
+          "type": "file"
+        }
+      ]
+    },
+    "read_results": [
+      {
+        "ok": true,
+        "path": "data/policies/archive-q7.md",
+        "content": "# Chính sách hoàn tiền trước tháng 10\nÁp dụng cho ngày mua trước 2026-10-01.\nĐược yêu cầu hoàn tiền trong 7 ngày kể từ ngày mua.\nPhí hoàn tiền: 10% giá trị đơn hàng.\nKhông hoàn tiền nếu sản phẩm đã kích hoạt.\n"
+      },
+      {
+        "ok": true,
+        "path": "data/policies/document-x9.md",
+        "content": "# Chính sách hoàn tiền từ tháng 10\nÁp dụng cho ngày mua từ 2026-10-01, bao gồm ngày này.\nĐược yêu cầu hoàn tiền trong 14 ngày kể từ ngày mua.\nKhông thu phí hoàn tiền.\nKhông hoàn tiền nếu sản phẩm đã kích hoạt.\n"
+      }
+    ],
+    "limitation": "No model or conversation invoked. Fresh-conversation policy reasoning is still pending live testing."
+  }
+}
